@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head >
+<link rel="shortcut icon"  href="123.png">
+<link rel="stylesheet" href="/bitrix/templates/uvc/css/core.min.css" />
+<link rel="stylesheet" href="/bitrix/templates/uvc/css/skin.css" />
+<link rel="stylesheet" href="/bitrix/templates/uvc/plugins/masterslider/style/masterslider2.css" />
+<link href="/bitrix/templates/uvc/plugins/masterslider/skins/default/style.css" rel='stylesheet' type='text/css'>
+<script src="/bitrix/templates/uvc/plugins/masterslider/jquery.min.js"></script>
+<script src="/bitrix/templates/uvc/plugins/masterslider/jquery.easing.min.js"></script>
+<script src="/bitrix/templates/uvc/plugins/masterslider/masterslider.min.js"></script>
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" crossorigin="anonymous">
+</head>
+<body>
+  <div class="text">Thanks🫶🏻</div>
+
+<style>
+
+
+.typed-cursor {display:none;
+}
+
+body, .content
+{
+    background:none transparent!important; overflow:hidden!important;
+}
+canvas{z-index:-1; position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:auto;}
+
+@font-face {
+font-family: Helioscond;
+src: url(/upload/iblock/713/7137819e5385850cdccf8395b8525564.otf) format("truetype");
+}
+.font{
+font-family: 'Helioscond', sans-serif;
+}
+.backimg{
+filter:
+;}
+
+.size {
+font-size:  8.4rem
+}
+.size2 {
+font-size: 6rem
+}
+.size3 {
+font-size: 6rem
+}
+.color1 {
+color:  #FFFFFF}
+.color2 {
+color:#fff
+}
+.color3 {
+color:#fff
+}
+.overlayframe{
+width:276px;
+}
+body {
+  background-color: black !important;
+}
+canvas {
+  background-color: black;
+}
+@import url('https://fonts.cdnfonts.com/css/clear-sans');
+
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Clear Sans', sans-serif;
+  font-size: 6rem;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+}
+
+
+</style>
+
+<div class="master-slider ms-skin-light-2" id="masterslider">
+<div class="ms-slide">
+
+<img data="2" class="backimg"  src=""  data-src="/upload/iblock/a8e/a8e531860477a521a215745c5f134ca4.png" alt=""/> 
+
+<canvas class="canvas" id="canvas" width="1920" height="1080"></canvas>
+
+<script>
+var canvas = document.querySelector("canvas");
+var ctx = canvas.getContext("2d");
+
+var ww = window.innerWidth;
+var wh = window.innerHeight;
+
+var hearts = [];
+function init(){
+  requestAnimationFrame(render);
+  
+  canvas.width = ww;
+  canvas.height = wh;
+  
+  for(var i=0;i<100;i++){
+    hearts.push(new Heart());
+  }
+}
+
+function Heart(){
+  this.x = Math.random()*ww;
+  this.y = Math.random()*wh;
+  this.opacity = (Math.random()*0.5)+0.5;
+  this.vel = {
+    x:(Math.random()-0.5)*1,
+    y:(Math.random()-0.5)*1
+  };
+  this.targetScale = (Math.random()*0.03)+0.02;
+  this.scale = this.targetScale * Math.random();
+}
+Heart.prototype.update = function(){
+  this.x += this.vel.x;
+  this.y += this.vel.y;
+  
+  this.scale += (this.targetScale -this.scale)*0.01;
+  if(this.x - this.width > ww || this.x+this.width < 0){
+    this.scale = 0;
+    this.x = Math.random()*ww;
+  }
+  if(this.y - this.height > wh || this.y+this.height < 0){
+    this.scale = 0;
+    this.y = Math.random()*wh;
+  }
+  this.width  =473.8*this.scale;
+  this.height  =408.6*this.scale;
+}
+Heart.prototype.draw = function(){
+  ctx.globalAlpha = this.opacity;
+  ctx.drawImage(heartImage, this.x-this.width*0.5, this.y-this.height*0.5, this.width, this.height);
+}
+
+function render(){
+  ctx.clearRect(0,0,ww, wh);
+  // ctx.globalAlpha = 1;
+  // ctx.fillStyle = "rgba(255,255,255,0.3)";
+  // ctx.fillRect(0,0,ww, wh);
+  for(var i=0;i<100;i++){
+    hearts[i].update();
+    hearts[i].draw();
+  }
+  requestAnimationFrame(render);
+}
+
+var heartImage = new Image();
+heartImage.onload = init;
+heartImage.src = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NzMuOHB4IiBoZWlnaHQ9IjQwOC42cHgiIHZpZXdCb3g9IjAgMCA0NzMuOCA0MDguNiI+PHBhdGggZmlsbD0iI2QzMjkzMiIgZD0iTTQwNC42LDE2LjZDMzg1LjQsNi4xLDM2My41LDAsMzQwLDBjLTQxLjUsMC03OC41LDE4LjktMTAzLDQ4LjVDMjEyLjMsMTguOSwxNzUuMywwLDEzMy44LDAgYy0yMy4zLDAtNDUuMyw2LjEtNjQuNSwxNi42QzI3LjksMzkuNSwwLDgzLjQsMCwxMzMuOWMwLDE0LjQsMi40LDI4LjMsNi42LDQxLjJDMjkuNiwyNzguNCwyMzcsNDA4LjYsMjM3LDQwOC42IHMyMDcuMi0xMzAuMiwyMzAuMi0yMzMuNWM0LjMtMTIuOSw2LjYtMjYuOCw2LjYtNDEuMkM0NzMuOCw4My40LDQ0NS45LDM5LjYsNDA0LjYsMTYuNnoiLz48L3N2Zz4=";
+
+window.addEventListener("resize", function(){
+  ww =  window.innerWidth;
+  wh =  window.innerHeight;
+})
+</script>
+
+</div>
+
+</div><!-- end of masterslider1 -->
+<script type="text/javascript">
+
+var slider = new MasterSlider();
+slider.setup('masterslider' , {
+width:1920,
+height:1080,
+space:0,
+layout:'boxed',
+grabCursor:false,
+swipe:false,
+});
+</script>
+</body>
+</html>
